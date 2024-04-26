@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Soccer</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font aswomse cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    <!-- css file link -->
+    <link rel="stylesheet" type="text/css" href="{% static 'ecommerce/css/style.css' %}">
+
+
+</head>
+<body>
+    <!-- header section start -->
+    {% load static %}
+    <header class="header">
+        <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Vintage Soccer </a>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#products">Products</a>
+            <a href="#categories">Categories</a>
+            <a href="#review">Review</a>
+            <a href="#blogs">Blogs</a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+        </div>
+        <form action="" class="search-form">
+            <input type="search" id="search-box" placeholder="search here">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+        <div class="shopping-cart">
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="{% static 'ecommerce/image/cart-1.jpeg' %}" alt="">
+                <div class="content">
+                    <h3>Holland</h3>
+                    <span class="price">$64.99/-</span>
+                    <span class="quantity">qty : 1</span>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="{% static 'ecommerce/image/cart-2.jpeg' %}" alt="">
+                <div class="content">
+                    <h3>Holland</h3>
+                    <span class="price">$64.99/-</span>
+                    <span class="quantity">qty : 1</span>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-trash"></i>
+                <img src="{% static 'ecommerce/image/cart-3.jpeg' %}" alt="">
+                <div class="content">
+                    <h3>Holland</h3>
+                    <span class="price">$64.99/-</span>
+                    <span class="quantity">qty : 1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- <form action="" class="login-form"> -->
+            {% if user.is_authenticated %}
+            <form action="{% url 'logout_user' %}" class="login-form" method="POST">
+                <h3>Logged in as {{ user.username }}</h3>
+                {% csrf_token %}
+                <button type="submit">Logout</button>   
+            </form>
+            {% else %}
+            <form action="" class="login-form">
+                <h2>Login now</h2>
+                <p class="box"><a href="{% url 'login_user' %}">Log in</a></p>
+                <p class="box">don't have an account <a href="{% url 'signup' %}">Sign up</a></p>
+            </form>
+            {% endif %}
+            <!-- <input type="email" class="box">
+            <input type="password" class="box">
+            <p>forgot your password <a href="#">click here</a></p>
+            <p>don't have an account <a href="#">create now</a></p>
+            <input type="submit" value="login now" class="btn"> -->
+        <!-- </form> -->
+    </header>
+    <!-- end of header -->
+
+    <!-- start of home section -->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>vintage and <span>classic</span> jerseys for all fans</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, rem doloremque! Repellat molestias aspernatur, exercitationem tempora nam vitae quibusdam nemo laborum vel accusantium, iure voluptates aperiam est, explicabo id officia.</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+    </section>
+    <!-- end of home section -->
+    
+    <!-- features section begins -->
+    <section class="features" id="features">
+        <h1 class="heading"> our <span>features</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="{% static 'ecommerce/image/feat-1.png' %}" alt="">
+                <h3>fast delivery</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur natus tenetur cumque mollitia enim consectetur repudiandae quibusdam? Alias quibusdam sequi eum harum temporibus asperiores rerum saepe beatae animi quia!</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+            <div class="box-container">
+                <div class="box">
+                    <img src="{% static 'ecommerce/image/feat-2.jpeg' %}" alt="">
+                    <h3>safe and secure online payment</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur natus tenetur cumque mollitia enim consectetur repudiandae quibusdam? Alias quibusdam sequi eum harum temporibus asperiores rerum saepe beatae animi quia!</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
+            </div>
+            <div class="box-container">
+                <div class="box">
+                    <img src="{% static 'ecommerce/image/feat-3.jpeg' %}" alt="">
+                    <h3>Veriety of jerseys</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat consequatur natus tenetur cumque mollitia enim consectetur repudiandae quibusdam? Alias quibusdam sequi eum harum temporibus asperiores rerum saepe beatae animi quia!</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- features section ends -->
+
+    <!-- products section starts -->
+    <section class="products" id="products">
+        <h1 class="heading"> our <span>products</span></h1>
+        <div class="swiper product-slider">
+            <div class="swiper-wrapper">
+                <!-- {% for item in items %}
+                <div class="swiper-slide box">
+                    <img src="{{ item.image.url }}" alt="">
+                    <h3>{{ item.title }}</h3>
+                    <div class="price"> ${{ item.price }}</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    
+                    <a href="{% url 'add_to_cart' item.id %}" class="btn">add to cart</a>
+                </div>
+                {% endfor %} -->
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/product-1.jpeg' %}" alt="">
+                    <h3>mexico mundial</h3>
+                    <div class="price"> $49.99/- - 55.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/product-2.jpeg' %}" alt="">
+                    <h3>fiorentina classic</h3>
+                    <div class="price"> $49.99/- - 69.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/product-3.jpeg' %}" alt="">
+                    <h3>france zidane</h3>
+                    <div class="price"> $59.99/- - 70.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/product-4.jpeg' %}" alt="">
+                    <h3>fc barcelona</h3>
+                    <div class="price"> $49.99/- - 59.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- products section ends -->
+
+    <!-- categories section begins -->
+    <section class="categories" id="categories">
+        <h1 class="heading"> product <span>categories</span></h1>
+        <div class="box-container">
+
+            <div class="box">
+                <img src="{% static 'ecommerce/image/cat-1.jpeg' %}" alt="">
+                <h3>kids</h3>
+                <p>upto 45% off</p>
+                <a href="#" class="btn">shop now</a>
+            </div>
+            <div class="box">
+                <img src="{% static 'ecommerce/image/cat-2.jpeg' %}" alt="">
+                <h3>mens</h3>
+                <p>upto 45% off</p>
+                <a href="#" class="btn">shop now</a>
+            </div>
+            <div class="box">
+                <img src="{% static 'ecommerce/image/cat-3.jpeg' %}" alt="">
+                <h3>womans</h3>
+                <p>upto 45% off</p>
+                <a href="#" class="btn">shop now</a>
+            </div>
+            <div class="box">
+                <img src="{% static 'ecommerce/image/cat-4.jpeg' %}" alt="">
+                <h3>international</h3>
+                <p>upto 45% off</p>
+                <a href="#" class="btn">shop now</a>
+            </div>
+        </div>
+    </section>
+    <!-- categories section ends -->
+
+    <!-- review section -->
+    <section class="review" id="review">
+        <h1 class="heading"> customer's <span>review</span></h1>
+        <div class="swiper review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/pic-1.png' %}" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus nihil dicta sit temporibus consequuntur quasi iste impedit perferendis quam officiis, ducimus quidem quae obcaecati, molestias, nesciunt atque. Temporibus, ratione rerum!</p>
+                    <h3>jon doe</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/pic-2.jpeg' %}" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus nihil dicta sit temporibus consequuntur quasi iste impedit perferendis quam officiis, ducimus quidem quae obcaecati, molestias, nesciunt atque. Temporibus, ratione rerum!</p>
+                    <h3>jane smith</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/pic-3.png' %}" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus nihil dicta sit temporibus consequuntur quasi iste impedit perferendis quam officiis, ducimus quidem quae obcaecati, molestias, nesciunt atque. Temporibus, ratione rerum!</p>
+                    <h3>mr beans</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide box">
+                    <img src="{% static 'ecommerce/image/pic-4.jpeg' %}" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus nihil dicta sit temporibus consequuntur quasi iste impedit perferendis quam officiis, ducimus quidem quae obcaecati, molestias, nesciunt atque. Temporibus, ratione rerum!</p>
+                    <h3>nick jackson</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- review section ends -->
+
+    <!-- blog section begins -->
+    <section class="blogs" id="blogs">
+        <h1 class="heading"> our <span>blogs</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="{% static 'ecommerce/image/blog-1.jpeg' %}" alt="">
+                <div class="content">
+                    <div class="icons">
+                        <a href="#"><i class="fas fa-user"></i> by user </a>
+                        <a href="#"><i class="fas fa-calendar"></i> 1st may, 2021</a>
+           1        </div>
+                    <h3>futbol saving kids</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi explicabo illum aut facilis modi distinctio adipisci quisquam. Voluptatibus itaque magni corporis mollitia impedit aperiam explicabo obcaecati enim sint reiciendis? Possimus.</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'ecommerce/image/blog-2.jpeg' %}" alt="">
+                <div class="content">
+                    <div class="icons">
+                        <a href="#"><i class="fas fa-user"></i> by user </a>
+                        <a href="#"><i class="fas fa-calendar"></i> 1st may, 2021</a>
+           1        </div>
+                    <h3>season goal</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi explicabo illum aut facilis modi distinctio adipisci quisquam. Voluptatibus itaque magni corporis mollitia impedit aperiam explicabo obcaecati enim sint reiciendis? Possimus.</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'ecommerce/image/blog-3.jpeg' %}" alt="">
+                <div class="content">
+                    <div class="icons">
+                        <a href="#"><i class="fas fa-user"></i> by user </a>
+                        <a href="#"><i class="fas fa-calendar"></i> 1st may, 2021</a>
+           1        </div>
+                    <h3>summer tornaments to watch</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi explicabo illum aut facilis modi distinctio adipisci quisquam. Voluptatibus itaque magni corporis mollitia impedit aperiam explicabo obcaecati enim sint reiciendis? Possimus.</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog section ends -->
+
+    <!-- footer section -->
+    <section class="footer">
+        <div class="box-container">
+
+            <div class="box">
+                <h3> vintage soccer <i class="fas fa-shopping-basket"></i></h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maiores odio earum quae modi aliquam qui possimus labore obcaecati eveniet a ullam veniam sed, velit voluptatibus eaque et officiis repellat!</p>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#" class="links"><i class="fas fa-phone"></i> +123-456-789 </a>
+                <a href="#" class="links"><i class="fas fa-phone"></i> +111-222-3333 </a>
+                <a href="#" class="links"><i class="fas fa-envelope"></i> vintagesoccer@email.com </a>
+                <a href="#" class="links"><i class="fas fa-map-marker-alt"></i> seattle, wa </a>
+            </div>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> blogs </a>
+            </div>
+            
+            <div class="box">
+                <h3>newsletter</h3>
+                <p>subscribe for latest updates</p>
+                <input type="email" placeholder="your email" class="email">
+                <input type="submit" value="subscribe" class="btn">
+                <img src="{% static 'ecommerce/image/payment.jpeg' %}" class="payment-img" alt="">
+            </div>
+        </div>
+    <div class="credit"> created by <span> Siddhartha Gautam and Rojan Paneru </span> | all rights reserved </div>
+
+    </section>
+    <!-- footer section ends -->
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    
+    <!-- js file link -->
+    <script src="{% static 'ecommerce/js/script.js' %}"></script>
+</body>
+</html>
